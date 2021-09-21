@@ -4,7 +4,7 @@ name: test_pr
 on: 
   push: 
     branches: [ release ]
-  pull_requests:
+  pull_request:
     branches: [ release ]
 jobs:
   test_job:
