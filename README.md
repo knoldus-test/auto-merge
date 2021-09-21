@@ -1,2 +1,2 @@
 # auto-merge
-testing auto-merge functionality.
+testing auto-merge functionality
