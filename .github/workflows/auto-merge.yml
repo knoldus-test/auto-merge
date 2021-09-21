@@ -1,23 +1,17 @@
-name: PRs to main
-on: 
-  pull_request:
-    branches: [main]
-    types: [closed]
+name: Merge any release branch to develop
+on:
+  push:
+    branches:
+      - 'main'
 jobs:
-  merge-master-back-to-dev:
-    if: github.event.pull_request.merged == true
-    timeout-minutes: 2
+  merge-branch:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set Git config
-      run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "Github Actions"
-    - name: Merge master back to dev
-      run: |
-          git fetch --unshallow
-          git checkout develop
-          git pull
-          git merge --no-ff main -m "Auto-merge master back to dev"
-          git push origin develop
+      - uses: actions/checkout@master
+
+      - name: Merge staging -> develop
+        uses: devmasx/merge-branch@v1.4.0
+        with:
+          type: now
+          target_branch: develop
+          github_token: ${{ github.token }}
