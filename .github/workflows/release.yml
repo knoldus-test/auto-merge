@@ -1,0 +1,15 @@
+  
+name: test_pr
+
+on: 
+  push: 
+    branches: [ release ]
+  pull_requests:
+    branches: [ release ]
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print 
+        run: echo Working on release branch
