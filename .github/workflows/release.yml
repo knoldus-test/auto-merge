@@ -4,8 +4,7 @@ name: test_pr
 on: 
   push: 
     branches: [ release ]
-  pull_request:
-    branches: [ release ]
+
 jobs:
   test_job:
     runs-on: ubuntu-latest
